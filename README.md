@@ -1,27 +1,90 @@
-Live Demo: https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/
+# 📄 RAG-Based Chatbot
 
+🚀 **Live Demo**: [Streamlit App](https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/)
 
-I recently spent two weeks learning and implementing Gen AI using langchain and its components.
-I discovered various concepts including how langchain helps in building LLM based applications, how it provides uniformity in diff interfaces to help developers.
-I discovered difference about LLMs and ChatModels. Open source llms and closed source llms. How can we use open source models locally. I learned about prompts and can we play with prompts
-to get exactly what we want. How can we use structured outputs, which models support structured output by default and which don't. Learned pydantic library for data validation. Discovered different
-type of output parsers including string, json, pydantic. I learned how chains are formed and how they make code so easy and for me it was most interesting part. I learned about runnables,
-their types and what was the need of them and how runnable sequence is so popular so it gets simple chain like interface to provide ease to developers. I learned how to build different scenario
-suitable chains like sequential, parallel, conditional. Then I moved forward to RAG. Understood every letter. Indexing like how to retreive data from external source, chunking it, create embeddings,
-storing in vector dbs like Chroma, FAISS, Pinecome,etc, (Inshort, I learned about different types of loaders, splitters, chunkers and vector stores).Then, today I developed my first simple rag based 
-bot where you upload your file in (pdf/docx/txt) and can question about anything and it will answer accordingly.
+---
 
-Techs:
--Langchain 
--Semantic Chunker
--PyPDFLoader, unstructuredworddocloader, textloader
--retreiver (technique Maximal Marginal Relevance)
--OpenAI API
--Prompt templates
--Streamlit for UI
+## 📚 What I Learned
 
-Flow:
--User uploads file + write query + press enter
--receiving file and query, load documents, break into chunks, embeddings stored in faiss vector store, then retreiver retreives the top 3 matches using MMR, then a structured prompt is 
-created and sent to open ai chat model, then through chain invoke model and parses output string
--user gets to see result 
+Over the past two weeks, I’ve been diving deep into **Generative AI** using **LangChain** and its ecosystem. Here's a summary of what I explored and implemented:
+
+### 🔹 LangChain Fundamentals
+
+* Differences between **LLMs** vs. **ChatModels**
+* Usage of **open-source** and **closed-source** LLMs (local & cloud)
+* Uniform interfaces provided by LangChain to ease development
+* Understanding and experimenting with **prompts** to fine-tune responses
+
+### 🔹 Structured Outputs
+
+* Learned to work with:
+
+  * `pydantic` for schema validation
+  * Output parsers: `StrOutputParser`, `JsonOutputParser`, `PydanticOutputParser`
+* Which models support structured output natively vs. with parsing
+
+### 🔹 Chains and Runnables
+
+* Built **sequential**, **parallel**, and **conditional chains**
+* Explored **Runnables** and their types
+* Understood `RunnableSequence` for building modular pipelines
+
+### 🔹 RAG (Retrieval-Augmented Generation)
+
+* What it means (Retrieve + Augment + Generate)
+* Concepts covered:
+
+  * **Document indexing**
+  * **Chunking strategies**
+  * Creating **embeddings**
+  * Using **vector databases**: FAISS, Chroma, Pinecone
+  * Explored different loaders, chunkers, and vector store integrations
+
+---
+
+## 🤖 Project Overview
+
+A simple **RAG-based chatbot** that lets you upload a document (`.pdf`, `.docx`, or `.txt`) and ask questions about its content. The model retrieves the relevant parts and answers intelligently using an LLM.
+
+---
+
+## 🛠️ Tech Stack
+
+* **LangChain**
+* **Streamlit** – for the UI
+* **OpenAI API** – as the LLM backend
+* **FAISS** – vector store for similarity search
+* **SemanticChunker** – for intelligent document splitting
+* **Document Loaders**:
+
+  * `PyPDFLoader`
+  * `UnstructuredWordDocumentLoader`
+  * `TextLoader`
+* **Retriever**: Maximal Marginal Relevance (MMR) technique
+* **Prompt Templates** – to control model behavior
+
+---
+
+## 🔁 How It Works (Flow)
+
+1. **User uploads** a file and enters a query
+2. The app:
+
+   * Loads the document
+   * Chunks the content using `SemanticChunker`
+   * Converts chunks into embeddings
+   * Stores embeddings in **FAISS**
+3. A **Retriever** uses **MMR** to find top 3 relevant chunks
+4. A structured **PromptTemplate** is created with query + context
+5. The **LLM (ChatOpenAI)** is invoked using a **Chain**
+6. The output is parsed and displayed to the user
+
+---
+
+## ✅ Features
+
+* Upload support for `.pdf`, `.docx`, and `.txt`
+* Clean Streamlit UI
+* Uses modern LangChain features (like `RunnableSequence`)
+* Emphasizes **retrieval quality** using MMR
+* Easy to deploy and extend
