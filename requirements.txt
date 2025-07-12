@@ -8,3 +8,4 @@ PyPDF2
 unstructured
 python-docx
 faiss-cpu
+langchain-experimental
