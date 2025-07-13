@@ -1,8 +1,9 @@
 # 📄 RAG-Based Chatbot
 
-🚀 **Live Demo of files based rag**: [Streamlit App](https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/)
-🚀 **Live Demo of yt transcript based rag**: [Streamlit App](https://ragbasedchatbot-hg6db9drjh3czwpybcyg5p.streamlit.app/)
----
+🚀 **Live Demo of files based rag**: https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/
+
+🚀 **Live Demo of yt transcript based rag**: https://ragbasedchatbot-hg6db9drjh3czwpybcyg5p.streamlit.app/
+
 
 main.py is for youtube transcript based rag (who answers with a single youtube video id about its content)
 documentrag.py is for uploading files and get answers
