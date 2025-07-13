@@ -2,6 +2,8 @@ streamlit
 python-dotenv
 langchain
 langchain-community
+langchain-core
+youtube-transcript-api
 langchain-openai
 openai
 PyPDF2
