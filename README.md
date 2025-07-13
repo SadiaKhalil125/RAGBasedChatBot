@@ -1,8 +1,11 @@
 # 📄 RAG-Based Chatbot
 
-🚀 **Live Demo**: [Streamlit App](https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/)
-
+🚀 **Live Demo of files based rag**: [Streamlit App](https://ragbasedchatbot-ixz5tvmptnqnu68jp34x6a.streamlit.app/)
+🚀 **Live Demo of yt transcript based rag**: [Streamlit App](https://ragbasedchatbot-hg6db9drjh3czwpybcyg5p.streamlit.app/)
 ---
+
+main.py is for youtube transcript based rag (who answers with a single youtube video id about its content)
+documentrag.py is for uploading files and get answers
 
 ## 📚 What I Learned
 
@@ -65,13 +68,13 @@ A simple **RAG-based chatbot** that lets you upload a document (`.pdf`, `.docx`,
 
 ---
 
-## 🔁 How It Works (Flow)
+## 🔁 How It Works (Flow) (documentrag.py)
 
 1. **User uploads** a file and enters a query
 2. The app:
 
    * Loads the document
-   * Chunks the content using `SemanticChunker`
+   * Chunks the content using `SemanticChunker` 
    * Converts chunks into embeddings
    * Stores embeddings in **FAISS**
 3. A **Retriever** uses **MMR** to find top 3 relevant chunks
@@ -80,11 +83,23 @@ A simple **RAG-based chatbot** that lets you upload a document (`.pdf`, `.docx`,
 6. The output is parsed and displayed to the user
 
 ---
+## 🔁 How It Works (Flow) (main.py)
 
+1. **User uploads** a youtube video id and enters a query
+2. The app:
+
+   * Loads the transcript with youtube-transcript-api
+   * Chunks the content using `Recursive text splitter` 
+   * Converts chunks into embeddings
+   * Stores embeddings in **FAISS**
+3. A **Retriever** uses **cosine similarity method** to find top 3 relevant chunks
+4. A structured **PromptTemplate** is created with query + context
+5. The **LLM (ChatOpenAI)** is invoked using a **Chain**
+6. The output is parsed and displayed to the user
 ## ✅ Features
 
-* Upload support for `.pdf`, `.docx`, and `.txt`
+* Upload support for `youtube video id`,`.pdf`, `.docx`, and `.txt`
 * Clean Streamlit UI
-* Uses modern LangChain features (like `RunnableSequence`)
-* Emphasizes **retrieval quality** using MMR
+* Uses modern LangChain features (like `RunnableSequence`,`RunnableParallel`,`Runnablelambda`,RunnablePassthrough`)
+* Emphasizes **retrieval quality** using MMR,Cosine similarity
 * Easy to deploy and extend
